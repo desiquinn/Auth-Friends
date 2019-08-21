@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
 //username, password, submit button
 
 const Login = () => {
+    const [credentials, setCredentials] = useState({ username: '', password: '' })
+
+    const handleChange = (event) => {
+        console.log(event.target.name)
+        console.log(event.target.value)
+        setCredentials({
+            credentials: {
+                ...credentials,
+                [event.target.name]: event.target.value
+            }
+        });
+        console.log(credentials)
+    };
 
     return(
         <form>
@@ -13,15 +26,15 @@ const Login = () => {
                 type='text'
                 name='username'
                 placeholder='Username'
-
-
+                value={credentials.username}
+                onChange={handleChange}
             />
             <input 
                 type='password'
                 name='password'
                 placeholder='Password'
-
-                
+                value={credentials.password}
+                onChange={handleChange}
             />
             <button type='submit'>Login</button>
         </form>

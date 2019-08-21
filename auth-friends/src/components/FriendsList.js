@@ -23,7 +23,7 @@ const FriendsList = () => {
             </section>
 
             <section>
-                <Friend friend={friend}/>
+                <Friend />
             </section>
         </div>
     );

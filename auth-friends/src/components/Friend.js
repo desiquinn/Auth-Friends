@@ -8,13 +8,13 @@ import React from 'react';
 //   }
 
 
-const Friend = (props) => {
+const Friend = () => {
 
     return (
         <div>
-            <h3>{props.friend.name}</h3>
-            <p>age:{props.friend.age}</p>
-            <p>email:{props.friend.email}</p>  
+            <h3>Your Friend's Name{/*props.friend.name*/}</h3>
+            <p>age: his/her age{/*props.friend.age*/}</p>
+            <p>email: his/her email{/*props.friend.email*/}</p>  
         </div>
     );
 };

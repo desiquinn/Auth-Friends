@@ -1,3 +1,5 @@
+import React from 'react';
+
 // {
 //     id: 1
 //     name: 'Joe',

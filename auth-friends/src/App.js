@@ -1,8 +1,11 @@
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 
 import Login from './components/Login.js';
 import FriendsList from './components/FriendsList.js';
+import FriendForm from './components/FriendForm.js';
+
 
 import './App.css';
 
@@ -12,18 +15,21 @@ function App() {
 
 
       {/* {Links} */}
-      <ul>
-        <li>
-          <Link to='/login/'>Login</Link>
-        </li>
-        <li>
-          <Link to='/protected/'>Friends List</Link>
-        </li>
-      </ul>
+    
+          <Link to='/login/'>Login</Link><br/>
+        
+          <Link to='/friendslist/'>Friends List</Link><br/>
+        
+          <Link to='/addfriend/'>Add A Friend</Link><br/>
+       
 
       {/* {Routes} */}
+
       <Route path='/login/' component={Login} />
-      <Route exact path='/protected/' component={FriendsList} />
+
+      <PrivateRoute exact path='/friendslist/' component={FriendsList} />
+
+      <PrivateRoute path='/addfriend/' component={FriendForm} />
     </div>
   );
 }

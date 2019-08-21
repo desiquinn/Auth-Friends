@@ -8,24 +8,27 @@ const Login = () => {
     const [credentials, setCredentials] = useState({ username: '', password: '' })
 
     const handleChange = (event) => {
-        console.log(event.target.name);
-        console.log(event.target.value);
+        // console.log(event.target.name);
+        // console.log(event.target.value);
         setCredentials({
                 ...credentials,
                 [event.target.name]: event.target.value
             }
         );
-        console.log(credentials);
+        // console.log(credentials);
     };
 
     const login = (event) => {
         event.preventDefault();
         axios.post('http://localhost:5000/api/login', credentials)
         .then(res => {
-            console.log(res)
+            console.log('response:', res);
+            console.log('token:', res.data.payload);
+            localStorage.setItem('token', res.data.payload);
         })
         .catch(err => {
-            console.log(err.response)
+            console.log('error:', err.response);
+            console.log('error description:', err.response.data.error);
         })
     }
 

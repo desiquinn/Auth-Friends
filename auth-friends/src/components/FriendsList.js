@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth.js';
 
 import Friend from "./Friend.js";
 
@@ -12,6 +13,22 @@ import Friend from "./Friend.js";
 
 const FriendsList = () => {
 
+    const [friends, setFriends] = useState([]);
+
+    useEffect( () => {
+
+        axiosWithAuth().get('http://localhost:5000/api/friends')
+            .then(res => {
+                console.log('Get Request Response:', res.data)
+                setFriends(res.data)
+            })
+            .catch(err => {
+                console.log('Get Request Error:', err.response)
+            })
+
+    },[])
+    
+
     return(
         <div>
             <section>
@@ -23,7 +40,9 @@ const FriendsList = () => {
             </section>
 
             <section>
-                <Friend />
+                {friends.map(friend => {
+                    return <Friend key={friend.id} friend={friend}/>
+                })}
             </section>
         </div>
     );

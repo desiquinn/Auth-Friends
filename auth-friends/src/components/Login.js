@@ -4,7 +4,7 @@ import axios from 'axios';
 
 //username, password, submit button
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState({ username: '', password: '' })
 
     const handleChange = (event) => {
@@ -25,6 +25,7 @@ const Login = () => {
             console.log('response:', res);
             console.log('token:', res.data.payload);
             localStorage.setItem('token', res.data.payload);
+            props.history.push('/FriendsList');
         })
         .catch(err => {
             console.log('error:', err.response);
